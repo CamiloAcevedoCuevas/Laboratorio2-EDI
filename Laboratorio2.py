@@ -243,7 +243,7 @@ def main():
             print("____________________________________________________________________\n\nMostrar llamadas:")
             lista.print_llamadas()
             lista_premium.print_llamadas_premium()
-            print("\nLlamadas mostradas exitosamente.\n____________________________________________________________________")
+            print("\n____________________________________________________________________")
         elif opc == 4:
             print("____________________________________________________________________\n\nBuscar llamada")
             while True:
