@@ -226,14 +226,16 @@ def main():
                 try:
                     id = int(input("\nIngrese el ID de la llamada: "))
                     if int(id) >= 0:
-                        llamada = lista.get_llamada(id)
-                        if llamada == None:
-                            llamada = lista_premium.get_llamada_premium(id)
-                        if llamada == None:
-                            print("\nError: Llamada no encontrada.\n____________________________________________________________________")
+                        if lista.get_llamada(id) != None:
+                            lista.del_llamada
+                            print(f"\nLlamada {id} eliminada exitosamente.\n____________________________________________________________________")
+                            break
+                        elif lista_premium.get_llamada_premium(id) != None:
+                            lista_premium.del_llamada_premium(id)
+                            print(f"\nLlamada {id} eliminada exitosamente.\n____________________________________________________________________")
                             break
                         else:
-                            print(f"\nLlamada {id} eliminada exitosamente.\n____________________________________________________________________")
+                            print("\nError: Llamada no encontrada.\n____________________________________________________________________")
                             break
                     else:
                         print("\nError: Ingrese un número positivo.")
