@@ -38,7 +38,7 @@ class ListaEnlazadaSimple:
     Methods:
         add_llamada: Agrega una llamada a la lista
         del_llamada: Elimina la primera llamada de la lista
-        print_llamadas: Muestra las llamadas de la lista
+        get_llamadas: Muestra las llamadas de la lista
         get_llamada(id): Busca una llamada por su id
     """
     def __init__(self):
@@ -62,7 +62,7 @@ class ListaEnlazadaSimple:
         if self.head != None:
             self.head = self.head.next
 
-    def print_llamadas(self):
+    def get_llamadas(self):
         if self.head != None:
             actual = self.head
             while actual != None:
@@ -104,7 +104,7 @@ class ListaEnlazadaCircular:
     Methods:
         add_llamada_premium: Agrega una llamada premium a la lista
         del_llamada_premium: Elimina la primera llamada premium de la lista
-        print_llamadas_premium: Muestra las llamadas premium de la lista
+        get_llamadas_premium: Muestra las llamadas premium de la lista
         get_llamada_premium(id): Busca una llamada premium por su id
     """
     def __init__(self):
@@ -133,7 +133,7 @@ class ListaEnlazadaCircular:
                 actual.next = self.head.next
                 self.head = self.head.next
 
-    def print_llamadas_premium(self):
+    def get_llamadas_premium(self):
         if self.head != None:
             actual = self.head
             while actual.next != self.head:
@@ -243,8 +243,8 @@ def main():
                     print("\nError: Ingrese un número.")
         elif opc == 3:
             print("____________________________________________________________________\n\nMostrar llamadas:")
-            lista.print_llamadas()
-            lista_premium.print_llamadas_premium()
+            lista.get_llamadas()
+            lista_premium.get_llamadas_premium()
             print("\n____________________________________________________________________")
         elif opc == 4:
             print("____________________________________________________________________\n\nBuscar llamada")
