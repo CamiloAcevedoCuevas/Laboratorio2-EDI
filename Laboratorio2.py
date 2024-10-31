@@ -58,9 +58,19 @@ class ListaEnlazadaSimple:
                 new_llamada.next = self.head
                 self.head = new_llamada
 
-    def del_llamada(self):
-        if self.head != None:
-            self.head = self.head.next
+    def del_llamada(self, id):
+        actual = self.head
+        anterior = None
+        while actual:
+            if actual.id == id:
+                if anterior:
+                    anterior.next = actual.next
+                else:
+                    self.head = actual.next
+                    print(f"\nLlamada {id} eliminada exitosamente.\n____________________________________________________________________")
+                return
+            anterior = actual
+            actual = actual.next
 
     def get_llamadas(self):
         if self.head != None:
@@ -227,8 +237,7 @@ def main():
                     id = int(input("\nIngrese el ID de la llamada: "))
                     if int(id) >= 0:
                         if lista.get_llamada(id) != None:
-                            lista.del_llamada
-                            print(f"\nLlamada {id} eliminada exitosamente.\n____________________________________________________________________")
+                            lista.del_llamada(id)
                             break
                         elif lista_premium.get_llamada_premium(id) != None:
                             lista_premium.del_llamada_premium
