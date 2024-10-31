@@ -231,7 +231,7 @@ def main():
                             print(f"\nLlamada {id} eliminada exitosamente.\n____________________________________________________________________")
                             break
                         elif lista_premium.get_llamada_premium(id) != None:
-                            lista_premium.del_llamada_premium(id)
+                            lista_premium.del_llamada_premium
                             print(f"\nLlamada {id} eliminada exitosamente.\n____________________________________________________________________")
                             break
                         else:
