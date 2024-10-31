@@ -12,16 +12,7 @@
 # █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█
 # █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 class Llamada:
-    """Clase que representa una llamada
-
-    Args:
-        id (int): Identificador de la llamada
-        nombre (str): Nombre del cliente
-        prioridad (str): Prioridad de la llamada
-        estado (str): Estado de la llamada
-        next (Llamada): Referencia a la siguiente llamada
-    """
-
+    """Clase que representa una llamada."""
     def __init__(self, id, nombre, prioridad, estado):
         self.id = id
         self.nombre = nombre
@@ -30,21 +21,19 @@ class Llamada:
         self.next = None
     
 class ListaEnlazadaSimple:
-    """Clase que representa una lista enlazada simple
-
-    Args:
-        head (Llamada): Referencia a la primera llamada de la lista
-
-    Methods:
-        add_llamada: Agrega una llamada a la lista
-        del_llamada: Elimina la primera llamada de la lista
-        get_llamadas: Muestra las llamadas de la lista
-        get_llamada(id): Busca una llamada por su id
-    """
+    """Clase que representa una lista enlazada simple."""
     def __init__(self):
         self.head = None
 
     def add_llamada(self, id, nombre, prioridad, estado):
+        """Agrega una llamada a la lista
+
+        Args:
+            id (int): Identificador de la llamada.
+            nombre (str): Nombre del cliente.
+            prioridad (int): Prioridad de la llamada.
+            estado (int): Estado de la llamada.
+        """
         new_llamada = Llamada(id, nombre, prioridad, estado)
         if self.head == None:
             self.head = new_llamada
@@ -57,8 +46,14 @@ class ListaEnlazadaSimple:
             else:
                 new_llamada.next = self.head
                 self.head = new_llamada
+        print("\nLlamada agregada exitosamente.\n____________________________________________________________________")
 
     def del_llamada(self, id):
+        """Elimina una llamada por su id.
+
+        Args:
+            id (int): Identificador de la llamada.
+        """
         actual = self.head
         anterior = None
         while actual:
@@ -73,6 +68,7 @@ class ListaEnlazadaSimple:
             actual = actual.next
 
     def get_llamadas(self):
+        """Muestra las llamadas de la lista."""
         if self.head != None:
             actual = self.head
             while actual != None:
@@ -80,6 +76,14 @@ class ListaEnlazadaSimple:
                 actual = actual.next
 
     def get_llamada(self, id):
+        """Busca una llamada por su id.
+
+        Args:
+            id (int): Identificador de la llamada.
+
+        Returns:
+            actual: Llamada encontrada.
+        """
         if self.head != None:
             actual = self.head
             while actual != None:
@@ -89,15 +93,7 @@ class ListaEnlazadaSimple:
         return None
     
 class LlamadaPremium:
-    """Clase que representa una llamada premium
-
-    Args:
-        id (int): Identificador de la llamada premium
-        nombre (str): Nombre del cliente premium
-        estado (str): Estado de la llamada premium
-        next (LlamadaPremium): Referencia a la siguiente llamada premium
-    """
-    
+    """Clase que representa una llamada premium."""
     def __init__(self, id, nombre, prioridad, estado):
         self.id = id
         self.nombre = nombre
@@ -106,21 +102,19 @@ class LlamadaPremium:
         self.next = None
 
 class ListaEnlazadaCircular:
-    """Clase que representa una lista enlazada circular
-
-    Args:
-        head (LlamadaPremium): Referencia a la primera llamada premium de la lista
-
-    Methods:
-        add_llamada_premium: Agrega una llamada premium a la lista
-        del_llamada_premium: Elimina la primera llamada premium de la lista
-        get_llamadas_premium: Muestra las llamadas premium de la lista
-        get_llamada_premium(id): Busca una llamada premium por su id
-    """
+    """Clase que representa una lista enlazada circular."""
     def __init__(self):
         self.head = None
 
     def add_llamada_premium(self, id, nombre, prioridad, estado):
+        """Agrega una llamada premium a la lista.
+
+        Args:
+            id (int): Identificador de la llamada.
+            nombre (str): Nombre del cliente.
+            prioridad (int): Prioridad de la llamada.
+            estado (int): Estado de la llamada.
+        """
         new_llamada = LlamadaPremium(id, nombre, prioridad, estado)
         if self.head == None:
             self.head = new_llamada
@@ -131,8 +125,10 @@ class ListaEnlazadaCircular:
                 last = last.next
             last.next = new_llamada
             new_llamada.next = self.head
+        print("\nLlamada agregada exitosamente.\n____________________________________________________________________")
 
     def del_llamada_premium(self):
+        """Elimina la primera llamada premium de la lista."""
         if self.head != None:
             if self.head.next == self.head:
                 self.head = None
@@ -144,6 +140,7 @@ class ListaEnlazadaCircular:
                 self.head = self.head.next
 
     def get_llamadas_premium(self):
+        """Muestra las llamadas premium de la lista."""
         if self.head != None:
             actual = self.head
             while actual.next != self.head:
@@ -152,6 +149,14 @@ class ListaEnlazadaCircular:
             print(f"\nID: {actual.id}, Nombre: {actual.nombre}, Prioridad: {actual.prioridad}, Estado: {actual.estado}")
 
     def get_llamada_premium(self, id):
+        """Busca una llamada premium por su id.
+
+        Args:
+            id (int): Identificador de la llamada.
+
+        Returns:
+            actual: Llamada premium encontrada.
+        """
         if self.head != None:
             actual = self.head
             while actual != None:
@@ -229,7 +234,6 @@ def main():
                 lista_premium.add_llamada_premium(id, nombre, prioridad, estado)
             else:
                 lista.add_llamada(id, nombre, prioridad, estado)
-            print("\nLlamada agregada exitosamente.\n____________________________________________________________________")
         elif opc == 2:
             print("____________________________________________________________________\n\nEliminar llamada")
             while True:
