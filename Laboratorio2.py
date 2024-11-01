@@ -160,7 +160,7 @@ class ListaEnlazadaCircular:
 def main():
     lista = ListaEnlazadaSimple()
     lista_premium = ListaEnlazadaCircular()
-    print("Menú")
+    print("\nMenú")
     while True:
         print("1.Agregar llamada\n2.Eliminar llamada\n3.Mostrar llamadas\n4.Buscar llamada\n5.Salir")
         while True:
