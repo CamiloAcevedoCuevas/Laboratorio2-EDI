@@ -35,7 +35,6 @@ class ListaEnlazadaSimple:
             else:
                 new_llamada.next = self.head
                 self.head = new_llamada
-        print("____________________________________________________________________")
 
     def del_llamada(self, id):
         """Elimina una llamada por su id.
@@ -51,14 +50,12 @@ class ListaEnlazadaSimple:
                     anterior.next = actual.next
                 else:
                     self.head = actual.next
-                    print("____________________________________________________________________")
                 return
             anterior = actual
             actual = actual.next
 
     def get_llamadas(self):
         """Muestra las llamadas de la lista."""
-        print("____________________________________________________________________")
         if self.head != None:
             actual = self.head
             while actual != None:
@@ -115,7 +112,6 @@ class ListaEnlazadaCircular:
                 last = last.next
             last.next = new_llamada
             new_llamada.next = self.head
-        print("____________________________________________________________________")
 
     def del_llamada_premium(self, id):
         """Elimina una llamada premium por su id.
@@ -131,7 +127,6 @@ class ListaEnlazadaCircular:
                     anterior.next = actual.next
                 else:
                     self.head = actual.next
-                    print("____________________________________________________________________")
                 return
             anterior = actual
             actual = actual.next
@@ -144,7 +139,6 @@ class ListaEnlazadaCircular:
                 print(f"---- ID del cliente: {actual.id}, Nombre del cliente: {actual.nombre}, Prioridad de la llamada: {actual.prioridad}, Estado de la llamada: {actual.estado}")
                 actual = actual.next
             print(f"---- ID del cliente: {actual.id}, Nombre del cliente: {actual.nombre}, Prioridad de la llamada: {actual.prioridad}, Estado de la llamada: {actual.estado}")
-        print("____________________________________________________________________")
 
     def get_llamada_premium(self, id):
         """Busca una llamada premium por su id.
@@ -166,19 +160,20 @@ class ListaEnlazadaCircular:
 def main():
     lista = ListaEnlazadaSimple()
     lista_premium = ListaEnlazadaCircular()
+    print("Menú")
     while True:
-        print("Menu\n1. Agregar llamada\n2. Eliminar llamada\n3. Mostrar llamadas\n4. Buscar llamada\n5. Salir")
+        print("1.Agregar llamada\n2.Eliminar llamada\n3.Mostrar llamadas\n4.Buscar llamada\n5.Salir")
         while True:
             try:
-                opc = int(input("Ingrese una opción: "))
+                opc = int(input("\nIngrese una opción: "))
                 if int(opc) >= 1 and int(opc) <= 5:
                     break
                 else:
                     print("Error: Ingrese una opción válida.")
             except ValueError:
                 print("Error: Ingrese un número.")
+        print()
         if opc == 1:
-            print("____________________________________________________________________")
             while True:
                 try:
                     id = int(input("Ingrese el ID del cliente: "))
@@ -200,7 +195,7 @@ def main():
                     print("Error: Ingrese un texto.")
             while True:
                 try:
-                    prioridad = int(input("Ingrese la prioridad de la llamada (1: Regular, 2: VIP, 3: Premium): "))
+                    prioridad = int(input("Ingrese la prioridad de la llamada (1 Regular 2 VIP 3 Premium): "))
                     if int(prioridad) == 1 or int(prioridad) == 2 or int(prioridad) == 3:
                         break
                     else:
@@ -209,7 +204,7 @@ def main():
                     print("Error: Ingrese un número.")
             while True:
                 try:
-                    estado = int(input("Ingrese el estado de la llamada (1: Pendiente, 2: En proceso, 3: Finalizada): "))
+                    estado = int(input("Ingrese el estado de la llamada (1 Pendiente 2 En proceso 3 Finalizada): "))
                     if int(estado) == 1 or int(estado) == 2 or int(estado) == 3:
                         break
                     else:
@@ -232,30 +227,33 @@ def main():
                 lista_premium.add_llamada_premium(id, nombre, prioridad, estado)
             else:
                 lista.add_llamada(id, nombre, prioridad, estado)
+            print()
         elif opc == 2:
-            print("____________________________________________________________________")
             while True:
                 try:
                     id = int(input("Ingrese el ID del cliente: "))
                     if int(id) >= 0:
                         if lista.get_llamada(id) != None:
                             lista.del_llamada(id)
+                            print("\nLlamada eliminada.")
                             break
                         elif lista_premium.get_llamada_premium(id) != None:
                             lista_premium.del_llamada_premium(id)
+                            print("\nLlamada eliminada.")
                             break
                         else:
-                            print("Error: Llamada no encontrada.\n____________________________________________________________________")
+                            print("Error: Llamada no encontrada.")
                             break
                     else:
                         print("Error: Ingrese un número positivo.")
                 except ValueError:
                     print("Error: Ingrese un número.")
+            print()
         elif opc == 3:
             lista.get_llamadas()
             lista_premium.get_llamadas_premium()
+            print()
         elif opc == 4:
-            print("____________________________________________________________________")
             while True:
                 try:
                     id = int(input("Ingrese el ID del cliente: "))
@@ -264,15 +262,16 @@ def main():
                         if llamada == None:
                             llamada = lista_premium.get_llamada_premium(id)
                         if llamada == None:
-                            print("Error: Llamada no encontrada.\n____________________________________________________________________")
+                            print("Error: Llamada no encontrada.")
                             break
                         else:
-                            print(f"---- Nombre del cliente {llamada.nombre}, Prioridad de la llamada {llamada.prioridad}, Estado de llamada {llamada.estado}\n____________________________________________________________________")
+                            print(f"\n---- Nombre del cliente: {llamada.nombre}, Prioridad de la llamada: {llamada.prioridad}, Estado de llamada: {llamada.estado}")
                             break
                     else:
                         print("Error: Ingrese un número positivo.")
                 except ValueError:
                     print("Error: Ingrese un número.")
+            print()
         elif opc == 5:
             break
 
