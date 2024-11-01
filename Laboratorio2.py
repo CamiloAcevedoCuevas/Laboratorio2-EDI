@@ -1,5 +1,3 @@
-# Laboratorio 2
-# Desarrollado por Camilo Acevedo Cuevas
 class Llamada:
     """Clase que representa una llamada."""
     def __init__(self, id, nombre, prioridad, estado):
