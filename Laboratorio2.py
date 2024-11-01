@@ -160,9 +160,9 @@ class ListaEnlazadaCircular:
 def main():
     lista = ListaEnlazadaSimple()
     lista_premium = ListaEnlazadaCircular()
-    print("\nMenú")
+    print("\nMenú\n")
     while True:
-        print("1.Agregar llamada\n2.Eliminar llamada\n3.Mostrar llamadas\n4.Buscar llamada\n5.Salir")
+        print("1. Agregar llamada\n2. Eliminar llamada\n3. Mostrar llamadas\n4. Buscar llamada\n5. Salir")
         while True:
             try:
                 opc = int(input("\nIngrese una opción: "))
@@ -195,7 +195,7 @@ def main():
                     print("Error: Ingrese un texto.")
             while True:
                 try:
-                    prioridad = int(input("Ingrese la prioridad de la llamada (1 Regular 2 VIP 3 Premium): "))
+                    prioridad = int(input("Ingrese la prioridad de la llamada (1. Regular, 2. VIP, 3. Premium): "))
                     if int(prioridad) == 1 or int(prioridad) == 2 or int(prioridad) == 3:
                         break
                     else:
@@ -204,7 +204,7 @@ def main():
                     print("Error: Ingrese un número.")
             while True:
                 try:
-                    estado = int(input("Ingrese el estado de la llamada (1 Pendiente 2 En proceso 3 Finalizada): "))
+                    estado = int(input("Ingrese el estado de la llamada (1.Pendiente, 2.En proceso, 3.Finalizada): "))
                     if int(estado) == 1 or int(estado) == 2 or int(estado) == 3:
                         break
                     else:
