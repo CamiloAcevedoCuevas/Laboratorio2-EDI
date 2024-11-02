@@ -202,7 +202,7 @@ def main():
                     print("Error: Ingrese un número.")
             while True:
                 try:
-                    estado = int(input("Ingrese el estado de la llamada (1.Pendiente, 2.En proceso, 3.Finalizada): "))
+                    estado = int(input("Ingrese el estado de la llamada (1. Pendiente, 2. En proceso, 3. Finalizada): "))
                     if int(estado) == 1 or int(estado) == 2 or int(estado) == 3:
                         break
                     else:
